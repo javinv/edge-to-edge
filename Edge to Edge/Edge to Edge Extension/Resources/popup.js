@@ -2,11 +2,17 @@ const enabledBox = document.getElementById("enabled");
 const siteBox = document.getElementById("site");
 const siteRow = document.getElementById("site-row");
 const hostLabel = document.getElementById("host");
+const showButtonBox = document.getElementById("show-button");
 
 async function init() {
-  const saved = await browser.storage.local.get(["enabled", "disabledHosts"]);
+  const saved = await browser.storage.local.get(["enabled", "showButton", "disabledHosts"]);
   const disabledHosts = Array.isArray(saved.disabledHosts) ? saved.disabledHosts : [];
   enabledBox.checked = saved.enabled !== false;
+  showButtonBox.checked = saved.showButton !== false;
+
+  showButtonBox.addEventListener("change", () => {
+    browser.storage.local.set({ showButton: showButtonBox.checked });
+  });
 
   const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
   let host = "";

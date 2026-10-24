@@ -19,7 +19,7 @@ On the outer display Safari tells pages they are 382 points wide, but its web vi
 
 - Only pages laid out for phone screens (`width=device-width`) are touched. Desktop and fixed-width pages are left alone.
 - Nothing changes when there is no strip, such as on the inner display or on other iPhones.
-- The Edge to Edge button in Safari turns it off globally or for the current site.
+- A round button in Safari's strip turns it off or on for the current site (it can be hidden from the Edge to Edge menu in Safari, which also has a global switch).
 
 All the work happens in [`content.js`](<Edge to Edge/Edge to Edge Extension/Resources/content.js>), about a hundred lines.
 

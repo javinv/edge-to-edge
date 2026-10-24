@@ -83,7 +83,7 @@ struct HomeView: View {
 
                 VStack(spacing: 6) {
                     Label("Free, no ads, collects no data.", systemImage: "hand.raised")
-                    Text("Only pages built for phone screens are changed. Use the Edge to Edge button in Safari to turn it off for a site.")
+                    Text("Only pages built for phone screens are changed. Tap the round button in Safari's strip to turn it off or on for a site.")
                         .multilineTextAlignment(.center)
                 }
                 .font(.footnote)
