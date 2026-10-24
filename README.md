@@ -8,7 +8,7 @@ A free Safari extension for the folded iPhone Duo. On the outer display Safari k
 
 ## Install
 
-- **TestFlight:** _link coming soon_
+- **TestFlight (free beta):** https://testflight.apple.com/join/g2GfbbDH
 - **Build it yourself:** open `Edge to Edge/Edge to Edge.xcodeproj` in Xcode, pick your team under Signing & Capabilities and run it on your iPhone.
 
 Then turn it on in **Settings › Apps › Safari › Extensions › Edge to Edge**: switch on **Allow Extension** and set **All Websites** to **Allow**.
