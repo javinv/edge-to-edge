@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 110;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		590202AF308C814800A1BED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590202AE308C814800A1BED5 /* AppDelegate.swift */; };
+		590202B3308C814800A1BED5 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 590202B1308C814800A1BED5 /* Main.html */; };
+		590202B5308C814800A1BED5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 590202B4308C814800A1BED5 /* Icon.png */; };
+		590202B7308C814800A1BED5 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 590202B6308C814800A1BED5 /* Style.css */; };
+		590202B9308C814800A1BED5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590202B8308C814800A1BED5 /* SceneDelegate.swift */; };
+		590202BB308C814800A1BED5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590202BA308C814800A1BED5 /* ViewController.swift */; };
+		590202BE308C814800A1BED5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 590202BC308C814800A1BED5 /* LaunchScreen.storyboard */; };
+		590202C1308C814800A1BED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 590202BF308C814800A1BED5 /* Main.storyboard */; };
+		590202C9308C814900A1BED5 /* Edge to Edge Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 590202C8308C814900A1BED5 /* Edge to Edge Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		590202CE308C814900A1BED5 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590202CD308C814900A1BED5 /* SafariWebExtensionHandler.swift */; };
+		590202D0308C814900A1BED5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 590202C2308C814900A1BED5 /* Assets.xcassets */; };
+		590202E2308C814900A1BED5 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 590202DB308C814900A1BED5 /* popup.js */; };
+		590202E3308C814900A1BED5 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 590202DC308C814900A1BED5 /* images */; };
+		590202E4308C814900A1BED5 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 590202DD308C814900A1BED5 /* popup.html */; };
+		590202E5308C814900A1BED5 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 590202DE308C814900A1BED5 /* manifest.json */; };
+		590202E6308C814900A1BED5 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 590202DF308C814900A1BED5 /* popup.css */; };
+		590202E7308C814900A1BED5 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 590202E0308C814900A1BED5 /* _locales */; };
+		590202E8308C814900A1BED5 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 590202E1308C814900A1BED5 /* content.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		590202CA308C814900A1BED5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 590202A3308C814800A1BED5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 590202C7308C814900A1BED5;
+			remoteInfo = "Edge to Edge Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		590202D6308C814900A1BED5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				590202C9308C814900A1BED5 /* Edge to Edge Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		590202AB308C814800A1BED5 /* Edge to Edge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Edge to Edge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		590202AE308C814800A1BED5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		590202B2308C814800A1BED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		590202B4308C814800A1BED5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		590202B6308C814800A1BED5 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		590202B8308C814800A1BED5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		590202BA308C814800A1BED5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		590202BD308C814800A1BED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		590202C0308C814800A1BED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		590202C2308C814900A1BED5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		590202C3308C814900A1BED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		590202C8308C814900A1BED5 /* Edge to Edge Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Edge to Edge Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		590202CD308C814900A1BED5 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		590202CF308C814900A1BED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		590202DB308C814900A1BED5 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = Resources/popup.js; sourceTree = "<group>"; };
+		590202DC308C814900A1BED5 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = Resources/images; sourceTree = "<group>"; };
+		590202DD308C814900A1BED5 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = Resources/popup.html; sourceTree = "<group>"; };
+		590202DE308C814900A1BED5 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = Resources/manifest.json; sourceTree = "<group>"; };
+		590202DF308C814900A1BED5 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = popup.css; path = Resources/popup.css; sourceTree = "<group>"; };
+		590202E0308C814900A1BED5 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _locales; path = Resources/_locales; sourceTree = "<group>"; };
+		590202E1308C814900A1BED5 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = Resources/content.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		590202A8308C814800A1BED5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		590202C5308C814900A1BED5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		590202A2308C814800A1BED5 = {
+			isa = PBXGroup;
+			children = (
+				590202AD308C814800A1BED5 /* Edge to Edge */,
+				590202CC308C814900A1BED5 /* Edge to Edge Extension */,
+				590202AC308C814800A1BED5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		590202AC308C814800A1BED5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				590202AB308C814800A1BED5 /* Edge to Edge.app */,
+				590202C8308C814900A1BED5 /* Edge to Edge Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		590202AD308C814800A1BED5 /* Edge to Edge */ = {
+			isa = PBXGroup;
+			children = (
+				590202AE308C814800A1BED5 /* AppDelegate.swift */,
+				590202B8308C814800A1BED5 /* SceneDelegate.swift */,
+				590202BA308C814800A1BED5 /* ViewController.swift */,
+				590202BC308C814800A1BED5 /* LaunchScreen.storyboard */,
+				590202BF308C814800A1BED5 /* Main.storyboard */,
+				590202C2308C814900A1BED5 /* Assets.xcassets */,
+				590202C3308C814900A1BED5 /* Info.plist */,
+				590202B0308C814800A1BED5 /* Resources */,
+			);
+			path = "Edge to Edge";
+			sourceTree = "<group>";
+		};
+		590202B0308C814800A1BED5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				590202B1308C814800A1BED5 /* Main.html */,
+				590202B4308C814800A1BED5 /* Icon.png */,
+				590202B6308C814800A1BED5 /* Style.css */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		590202CC308C814900A1BED5 /* Edge to Edge Extension */ = {
+			isa = PBXGroup;
+			children = (
+				590202DA308C814900A1BED5 /* Resources */,
+				590202CD308C814900A1BED5 /* SafariWebExtensionHandler.swift */,
+				590202CF308C814900A1BED5 /* Info.plist */,
+			);
+			path = "Edge to Edge Extension";
+			sourceTree = "<group>";
+		};
+		590202DA308C814900A1BED5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				590202DB308C814900A1BED5 /* popup.js */,
+				590202DC308C814900A1BED5 /* images */,
+				590202DD308C814900A1BED5 /* popup.html */,
+				590202DE308C814900A1BED5 /* manifest.json */,
+				590202DF308C814900A1BED5 /* popup.css */,
+				590202E0308C814900A1BED5 /* _locales */,
+				590202E1308C814900A1BED5 /* content.js */,
+			);
+			name = Resources;
+			path = "Edge to Edge Extension";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		590202AA308C814800A1BED5 /* Edge to Edge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 590202D7308C814900A1BED5 /* Build configuration list for PBXNativeTarget "Edge to Edge" */;
+			buildPhases = (
+				590202A7308C814800A1BED5 /* Sources */,
+				590202A8308C814800A1BED5 /* Frameworks */,
+				590202A9308C814800A1BED5 /* Resources */,
+				590202D6308C814900A1BED5 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				590202CB308C814900A1BED5 /* PBXTargetDependency */,
+			);
+			name = "Edge to Edge";
+			productName = "Edge to Edge";
+			productReference = 590202AB308C814800A1BED5 /* Edge to Edge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		590202C7308C814900A1BED5 /* Edge to Edge Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 590202D3308C814900A1BED5 /* Build configuration list for PBXNativeTarget "Edge to Edge Extension" */;
+			buildPhases = (
+				590202C4308C814900A1BED5 /* Sources */,
+				590202C5308C814900A1BED5 /* Frameworks */,
+				590202C6308C814900A1BED5 /* Resources */,
+			);
+			buildRules = (
+			);
+			name = "Edge to Edge Extension";
+			productName = "Edge to Edge Extension";
+			productReference = 590202C8308C814900A1BED5 /* Edge to Edge Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		590202A3308C814800A1BED5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2710;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					590202AA308C814800A1BED5 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					590202C7308C814900A1BED5 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+				};
+			};
+			buildConfigurationList = 590202A6308C814800A1BED5 /* Build configuration list for PBXProject "Edge to Edge" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 590202A2308C814800A1BED5;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 590202AC308C814800A1BED5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				590202AA308C814800A1BED5 /* Edge to Edge */,
+				590202C7308C814900A1BED5 /* Edge to Edge Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		590202A9308C814800A1BED5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				590202B5308C814800A1BED5 /* Icon.png in Resources */,
+				590202C1308C814800A1BED5 /* Main.storyboard in Resources */,
+				590202BE308C814800A1BED5 /* LaunchScreen.storyboard in Resources */,
+				590202B3308C814800A1BED5 /* Main.html in Resources */,
+				590202D0308C814900A1BED5 /* Assets.xcassets in Resources */,
+				590202B7308C814800A1BED5 /* Style.css in Resources */,
+			);
+		};
+		590202C6308C814900A1BED5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				590202E7308C814900A1BED5 /* _locales in Resources */,
+				590202E6308C814900A1BED5 /* popup.css in Resources */,
+				590202E5308C814900A1BED5 /* manifest.json in Resources */,
+				590202E3308C814900A1BED5 /* images in Resources */,
+				590202E4308C814900A1BED5 /* popup.html in Resources */,
+				590202E8308C814900A1BED5 /* content.js in Resources */,
+				590202E2308C814900A1BED5 /* popup.js in Resources */,
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		590202A7308C814800A1BED5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				590202BB308C814800A1BED5 /* ViewController.swift in Sources */,
+				590202AF308C814800A1BED5 /* AppDelegate.swift in Sources */,
+				590202B9308C814800A1BED5 /* SceneDelegate.swift in Sources */,
+			);
+		};
+		590202C4308C814900A1BED5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				590202CE308C814900A1BED5 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		590202CB308C814900A1BED5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 590202C7308C814900A1BED5 /* Edge to Edge Extension */;
+			targetProxy = 590202CA308C814900A1BED5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		590202B1308C814800A1BED5 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				590202B2308C814800A1BED5 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		590202BC308C814800A1BED5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				590202BD308C814800A1BED5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		590202BF308C814800A1BED5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				590202C0308C814800A1BED5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		590202D1308C814900A1BED5 /* Debug configuration for PBXProject "Edge to Edge" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		590202D2308C814900A1BED5 /* Release configuration for PBXProject "Edge to Edge" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		590202D4308C814900A1BED5 /* Debug configuration for PBXNativeTarget "Edge to Edge Extension" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JR7AS44G4S;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Edge to Edge Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Edge to Edge Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.javinavarro.edgetoedge.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		590202D5308C814900A1BED5 /* Release configuration for PBXNativeTarget "Edge to Edge Extension" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JR7AS44G4S;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Edge to Edge Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Edge to Edge Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.javinavarro.edgetoedge.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		590202D8308C814900A1BED5 /* Debug configuration for PBXNativeTarget "Edge to Edge" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JR7AS44G4S;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Edge to Edge/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Edge to Edge";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.javinavarro.edgetoedge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		590202D9308C814900A1BED5 /* Release configuration for PBXNativeTarget "Edge to Edge" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JR7AS44G4S;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Edge to Edge/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Edge to Edge";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.javinavarro.edgetoedge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		590202A6308C814800A1BED5 /* Build configuration list for PBXProject "Edge to Edge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				590202D1308C814900A1BED5 /* Debug configuration for PBXProject "Edge to Edge" */,
+				590202D2308C814900A1BED5 /* Release configuration for PBXProject "Edge to Edge" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		590202D3308C814900A1BED5 /* Build configuration list for PBXNativeTarget "Edge to Edge Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				590202D4308C814900A1BED5 /* Debug configuration for PBXNativeTarget "Edge to Edge Extension" */,
+				590202D5308C814900A1BED5 /* Release configuration for PBXNativeTarget "Edge to Edge Extension" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		590202D7308C814900A1BED5 /* Build configuration list for PBXNativeTarget "Edge to Edge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				590202D8308C814900A1BED5 /* Debug configuration for PBXNativeTarget "Edge to Edge" */,
+				590202D9308C814900A1BED5 /* Release configuration for PBXNativeTarget "Edge to Edge" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 590202A3308C814800A1BED5 /* Project object */;
+	validationLevel = 1;
+}
