@@ -180,7 +180,7 @@
           div {
             background:
               linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
-              rgba(120, 120, 126, 0.92);
+              rgba(145, 145, 150, 0.92);
             border-color: rgba(255, 255, 255, 0.3);
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
             color: #fff;
@@ -188,7 +188,7 @@
           div.inside {
             background:
               linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
-              rgba(120, 120, 126, 0.55);
+              rgba(145, 145, 150, 0.5);
           }
           div.on { color: #0a84ff; }
         }
@@ -217,14 +217,35 @@
     host.style.opacity = "1";
   }
 
+  // Past the page's edge the button makes the page wider than its viewport,
+  // and Safari then lets it slide sideways while scrolling. Lock horizontal
+  // scrolling in that case, unless the page is wider than its viewport on
+  // its own.
+  let lockedOverflow = false;
+
+  function lockSideways(lock) {
+    if (lock === lockedOverflow) return;
+    lockedOverflow = lock;
+    if (lock) root.style.setProperty("overflow-x", "hidden", "important");
+    else root.style.removeProperty("overflow-x");
+  }
+
   function updateButton() {
     const show = state.enabled && state.showButton && strip > 0 && !zoomed() && isPhonePage();
     if (!show) {
       if (host) host.style.display = "none";
+      lockSideways(false);
       return;
     }
     if (!document.body) return;
     if (!host) buildButton();
+    if (gap) {
+      lockSideways(false);
+    } else {
+      host.style.display = "none";
+      lockSideways(false);
+      lockSideways(root.scrollWidth <= innerWidth + 1);
+    }
     host.style.display = "block";
     button.classList.toggle("on", isOn());
     button.classList.toggle("inside", gap > 0);
