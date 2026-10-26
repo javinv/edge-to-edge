@@ -108,9 +108,27 @@
     // Measure only while the page has its own viewport: once it is widened
     // the strip is still there but the page can no longer see it.
     if (!zoomed() && gap === 0) strip = measure();
-    gap = isOn() ? strip : 0;
+    // A site turned off keeps the wide viewport, so the button can stay
+    // fixed in the strip, but its content is held to the usual width.
+    const buttonWanted = state.enabled && state.showButton;
+    gap = isOn() || buttonWanted ? strip : 0;
     viewportTags().forEach(rewrite);
+    narrow(gap > 0 && !isOn());
     updateButton();
+  }
+
+  let narrowed = false;
+
+  function narrow(on) {
+    if (on === narrowed) return;
+    narrowed = on;
+    if (on) {
+      root.style.setProperty("width", `${displayWidth() - strip}px`, "important");
+      root.style.setProperty("max-width", `${displayWidth() - strip}px`, "important");
+    } else {
+      root.style.removeProperty("width");
+      root.style.removeProperty("max-width");
+    }
   }
 
   // Pages add the tag while parsing, and some scripts replace it later.
@@ -123,14 +141,10 @@
     if (changed) apply();
   }).observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["content"] });
 
-  // The on/off button lives in Safari's strip. When the page is widened the
-  // strip is inside its layout viewport and the button is simply fixed.
-  // When it is not, WebKit clips fixed and sticky elements to the page's
-  // width but still paints ordinary content past it, so the button is
-  // positioned absolutely and moved after each scroll, hidden meanwhile.
+  // The on/off button lives in Safari's strip, fixed inside the widened
+  // layout viewport.
   let host = null;
   let button = null;
-  let settleTimer = 0;
 
   // Arrows pointing out to both edges, drawn like an SF Symbol.
   const ICON =
@@ -165,9 +179,7 @@
           color: #000;
           transition: transform 0.2s cubic-bezier(0.3, 1.4, 0.6, 1), color 0.15s;
         }
-        /* The blur only inside the page: past its edge WebKit does not paint
-           composited layers, and backdrop-filter makes one. */
-        div.inside {
+        div {
           background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 60%),
             rgba(242, 242, 247, 0.55);
@@ -185,7 +197,7 @@
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
             color: #fff;
           }
-          div.inside {
+          div {
             background:
               linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
               rgba(145, 145, 150, 0.5);
@@ -204,60 +216,25 @@
 
   function placeButton() {
     if (!buttonShown()) return;
-    const left = displayWidth() - BUTTON_CENTER_FROM_EDGE - BUTTON_SIZE / 2;
-    if (gap) {
-      host.style.position = "fixed";
-      host.style.left = `${left}px`;
-      host.style.top = `${buttonTop()}px`;
-    } else {
-      host.style.position = "absolute";
-      host.style.left = `${left}px`;
-      host.style.top = `${Math.round(scrollY + buttonTop())}px`;
-    }
-    host.style.opacity = "1";
-  }
-
-  // Past the page's edge the button makes the page wider than its viewport,
-  // and Safari then lets it slide sideways while scrolling. Lock horizontal
-  // scrolling in that case, unless the page is wider than its viewport on
-  // its own.
-  let lockedOverflow = false;
-
-  function lockSideways(lock) {
-    if (lock === lockedOverflow) return;
-    lockedOverflow = lock;
-    if (lock) root.style.setProperty("overflow-x", "hidden", "important");
-    else root.style.removeProperty("overflow-x");
+    host.style.position = "fixed";
+    host.style.left = `${displayWidth() - BUTTON_CENTER_FROM_EDGE - BUTTON_SIZE / 2}px`;
+    host.style.top = `${buttonTop()}px`;
   }
 
   function updateButton() {
-    const show = state.enabled && state.showButton && strip > 0 && !zoomed() && isPhonePage();
+    // Only while the page is widened: past its edge WebKit paints no fixed
+    // elements.
+    const show = gap > 0 && state.showButton && !zoomed() && isPhonePage();
     if (!show) {
       if (host) host.style.display = "none";
-      lockSideways(false);
       return;
     }
     if (!document.body) return;
     if (!host) buildButton();
-    if (gap) {
-      lockSideways(false);
-    } else {
-      host.style.display = "none";
-      lockSideways(false);
-      lockSideways(root.scrollWidth <= innerWidth + 1);
-    }
     host.style.display = "block";
     button.classList.toggle("on", isOn());
-    button.classList.toggle("inside", gap > 0);
     button.setAttribute("aria-label", isOn() ? "Edge to Edge: on for this site" : "Edge to Edge: off for this site");
     placeButton();
-  }
-
-  function onScrollButton() {
-    if (!buttonShown() || gap) return;
-    host.style.opacity = "0";
-    clearTimeout(settleTimer);
-    settleTimer = setTimeout(placeButton, 160);
   }
 
   async function toggleSite() {
@@ -274,7 +251,7 @@
   let touch = null;
 
   function insideButton(point) {
-    if (!buttonShown() || host.style.opacity === "0") return false;
+    if (!buttonShown()) return false;
     const r = button.getBoundingClientRect();
     return point.clientX >= r.left && point.clientX <= r.right && point.clientY >= r.top && point.clientY <= r.bottom;
   }
@@ -311,11 +288,11 @@
     if (button) button.classList.remove("pressed");
   });
 
-  // A layout viewport or button wider than the page lets Safari pan it
+  // The wider layout viewport lets Safari pan the page
   // sideways by the strip's width; pull it back unless the page is wider
   // than the display on its own or zoomed in.
   function onScroll() {
-    if (!(gap || buttonShown()) || zoomed() || scrollX === 0) return;
+    if (!gap || zoomed() || scrollX === 0) return;
     if (root.scrollWidth > displayWidth() + 1) return;
     scrollTo(0, scrollY);
   }
@@ -327,10 +304,10 @@
   addEventListener("orientationchange", () => {
     gap = 0;
     viewportTags().forEach(rewrite);
+    narrow(false);
     setTimeout(apply, 400);
   });
   addEventListener("scroll", onScroll, { passive: true });
-  addEventListener("scroll", onScrollButton, { passive: true });
   if (window.visualViewport) visualViewport.addEventListener("resize", updateButton);
 
   browser.storage.local.get(["enabled", "showButton", "disabledHosts"]).then((saved) => {
