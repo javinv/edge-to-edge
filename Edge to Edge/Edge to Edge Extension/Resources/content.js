@@ -7,9 +7,11 @@
 (() => {
   const MAX_GAP = 160;
   const ORIGINAL = "data-edge-to-edge-original";
-  const BUTTON_SIZE = 44;
-  // Below Safari's back and Reader buttons, above the new-tab button.
-  const BUTTON_TOP = 330;
+  // Same size and column as Safari's own buttons in the strip.
+  const BUTTON_SIZE = 48;
+  const BUTTON_CENTER_FROM_EDGE = 48;
+  // The slot below Safari's back and Reader buttons, 60 points apart.
+  const BUTTON_TOP = 314;
   const root = document.documentElement;
   const state = { enabled: true, showButton: true, disabledHosts: [] };
   let strip = 0;
@@ -118,10 +120,11 @@
   let button = null;
   let settleTimer = 0;
 
+  // Arrows pointing out to both edges, drawn like an SF Symbol.
   const ICON =
-    '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" ' +
+    '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" ' +
     'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg>';
+    '<path d="M3.5 12h17M7.5 7.5 3 12l4.5 4.5M16.5 7.5 21 12l-4.5 4.5"/></svg>';
 
   function buildButton() {
     host = document.createElement("edge-to-edge-button");
@@ -135,22 +138,27 @@
         div {
           width: ${BUTTON_SIZE}px;
           height: ${BUTTON_SIZE}px;
+          box-sizing: border-box;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(250, 250, 252, 0.94);
-          box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.14), 0 2px 10px rgba(0, 0, 0, 0.12);
-          color: #8e8e93;
-          transition: transform 0.15s, color 0.15s;
+          background: rgba(247, 247, 248, 0.66);
+          -webkit-backdrop-filter: blur(14px) saturate(1.8);
+          backdrop-filter: blur(14px) saturate(1.8);
+          border: 1px solid rgba(0, 0, 0, 0.17);
+          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 3px 10px rgba(0, 0, 0, 0.08);
+          color: #000;
+          transition: transform 0.2s cubic-bezier(0.3, 1.4, 0.6, 1), color 0.15s;
         }
         div.on { color: #007aff; }
-        div.pressed { transform: scale(0.88); }
+        div.pressed { transform: scale(0.9); }
         @media (prefers-color-scheme: dark) {
           div {
-            background: rgba(44, 44, 46, 0.94);
-            box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.16), 0 2px 10px rgba(0, 0, 0, 0.4);
-            color: #98989d;
+            background: rgba(118, 118, 124, 0.62);
+            border-color: rgba(255, 255, 255, 0.14);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 3px 10px rgba(0, 0, 0, 0.35);
+            color: #fff;
           }
           div.on { color: #0a84ff; }
         }
@@ -166,7 +174,7 @@
 
   function placeButton() {
     if (!buttonShown()) return;
-    const left = displayWidth() - strip + Math.round((strip - BUTTON_SIZE) / 2);
+    const left = displayWidth() - BUTTON_CENTER_FROM_EDGE - BUTTON_SIZE / 2;
     if (gap) {
       host.style.position = "fixed";
       host.style.left = `${left}px`;
