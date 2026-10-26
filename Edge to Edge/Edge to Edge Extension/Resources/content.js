@@ -15,12 +15,14 @@
   // and tabs pill at the bottom stays put, so sit just above it.
   const BUTTON_BOTTOM_GAP = 157;
   const root = document.documentElement;
-  const state = { enabled: true, showButton: true, disabledHosts: [] };
+  const state = { enabled: true, showButton: true, fullHosts: [] };
   let strip = 0;
   let gap = 0;
 
-  function isOn() {
-    return state.enabled && !state.disabledHosts.includes(location.hostname);
+  // By default the page fills the strip but its content keeps clear of
+  // Safari's buttons; on sites in fullHosts the content runs under them too.
+  function isFull() {
+    return state.enabled && state.fullHosts.includes(location.hostname);
   }
 
   function zoomed() {
@@ -108,12 +110,9 @@
     // Measure only while the page has its own viewport: once it is widened
     // the strip is still there but the page can no longer see it.
     if (!zoomed() && gap === 0) strip = measure();
-    // A site turned off keeps the wide viewport, so the button can stay
-    // fixed in the strip, but its content is held to the usual width.
-    const buttonWanted = state.enabled && state.showButton;
-    gap = isOn() || buttonWanted ? strip : 0;
+    gap = state.enabled ? strip : 0;
     viewportTags().forEach(rewrite);
-    narrow(gap > 0 && !isOn());
+    narrow(gap > 0 && !isFull());
     updateButton();
   }
 
@@ -232,18 +231,21 @@
     if (!document.body) return;
     if (!host) buildButton();
     host.style.display = "block";
-    button.classList.toggle("on", isOn());
-    button.setAttribute("aria-label", isOn() ? "Edge to Edge: on for this site" : "Edge to Edge: off for this site");
+    button.classList.toggle("on", isFull());
+    button.setAttribute(
+      "aria-label",
+      isFull() ? "Edge to Edge: content runs under Safari's buttons" : "Edge to Edge: content keeps clear of Safari's buttons"
+    );
     placeButton();
   }
 
   async function toggleSite() {
     const host = location.hostname;
-    const saved = await browser.storage.local.get("disabledHosts");
-    const hosts = Array.isArray(saved.disabledHosts) ? saved.disabledHosts : [];
-    state.disabledHosts = hosts.includes(host) ? hosts.filter((h) => h !== host) : [...hosts, host];
+    const saved = await browser.storage.local.get("fullHosts");
+    const hosts = Array.isArray(saved.fullHosts) ? saved.fullHosts : [];
+    state.fullHosts = hosts.includes(host) ? hosts.filter((h) => h !== host) : [...hosts, host];
     apply();
-    browser.storage.local.set({ disabledHosts: state.disabledHosts });
+    browser.storage.local.set({ fullHosts: state.fullHosts });
   }
 
   // WebKit does not hit-test content drawn under Safari's strip, so taps on
@@ -311,17 +313,17 @@
 
   if (window.visualViewport) visualViewport.addEventListener("resize", updateButton);
 
-  browser.storage.local.get(["enabled", "showButton", "disabledHosts"]).then((saved) => {
+  browser.storage.local.get(["enabled", "showButton", "fullHosts"]).then((saved) => {
     if (typeof saved.enabled === "boolean") state.enabled = saved.enabled;
     if (typeof saved.showButton === "boolean") state.showButton = saved.showButton;
-    if (Array.isArray(saved.disabledHosts)) state.disabledHosts = saved.disabledHosts;
+    if (Array.isArray(saved.fullHosts)) state.fullHosts = saved.fullHosts;
     apply();
   });
 
   browser.storage.onChanged.addListener((changes) => {
     if (changes.enabled) state.enabled = changes.enabled.newValue !== false;
     if (changes.showButton) state.showButton = changes.showButton.newValue !== false;
-    if (changes.disabledHosts) state.disabledHosts = changes.disabledHosts.newValue || [];
+    if (changes.fullHosts) state.fullHosts = changes.fullHosts.newValue || [];
     apply();
   });
 })();

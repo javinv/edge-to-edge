@@ -5,8 +5,8 @@ const hostLabel = document.getElementById("host");
 const showButtonBox = document.getElementById("show-button");
 
 async function init() {
-  const saved = await browser.storage.local.get(["enabled", "showButton", "disabledHosts"]);
-  const disabledHosts = Array.isArray(saved.disabledHosts) ? saved.disabledHosts : [];
+  const saved = await browser.storage.local.get(["enabled", "showButton", "fullHosts"]);
+  const fullHosts = Array.isArray(saved.fullHosts) ? saved.fullHosts : [];
   enabledBox.checked = saved.enabled !== false;
   showButtonBox.checked = saved.showButton !== false;
 
@@ -21,7 +21,7 @@ async function init() {
     siteRow.hidden = true;
   } else {
     hostLabel.textContent = host;
-    siteBox.checked = disabledHosts.includes(host);
+    siteBox.checked = fullHosts.includes(host);
   }
 
   enabledBox.addEventListener("change", () => {
@@ -29,11 +29,11 @@ async function init() {
   });
 
   siteBox.addEventListener("change", async () => {
-    const current = (await browser.storage.local.get("disabledHosts")).disabledHosts || [];
+    const current = (await browser.storage.local.get("fullHosts")).fullHosts || [];
     const next = siteBox.checked
       ? [...new Set([...current, host])]
       : current.filter((h) => h !== host);
-    browser.storage.local.set({ disabledHosts: next });
+    browser.storage.local.set({ fullHosts: next });
   });
 }
 

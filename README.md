@@ -1,6 +1,6 @@
 # Edge to Edge
 
-A free Safari extension for the folded iPhone Duo. On the outer display Safari keeps an empty strip down the side of every page. Edge to Edge makes pages use the whole display, fixed headers, cookie banners and bottom bars included.
+A free Safari extension for the folded iPhone Duo. On the outer display Safari keeps an empty strip down the side of every page. Edge to Edge fills it: backgrounds, fixed headers, cookie banners and bottom bars reach the edge, while the text stays clear of Safari's buttons so nothing is hidden under them.
 
 | Before | After |
 | --- | --- |
@@ -19,7 +19,7 @@ On the outer display Safari tells pages they are 382 points wide, but its web vi
 
 - Only pages laid out for phone screens (`width=device-width`) are touched. Desktop and fixed-width pages are left alone.
 - Nothing changes when there is no strip, such as on the inner display or on other iPhones.
-- A round button in Safari's strip turns it off or on for the current site (it can be hidden from the Edge to Edge menu in Safari, which also has a global switch).
+- By default the page's content keeps its usual width, so text never sits under Safari's buttons. A round button in the strip lets the current site's text run to the edge as well (the button can be hidden from the Edge to Edge menu in Safari, which also has a global switch).
 
 All the work happens in [`content.js`](<Edge to Edge/Edge to Edge Extension/Resources/content.js>), about a hundred lines.
 
