@@ -308,6 +308,7 @@
     setTimeout(apply, 400);
   });
   addEventListener("scroll", onScroll, { passive: true });
+
   if (window.visualViewport) visualViewport.addEventListener("resize", updateButton);
 
   browser.storage.local.get(["enabled", "showButton", "disabledHosts"]).then((saved) => {
