@@ -10,8 +10,10 @@
   // Same size and column as Safari's own buttons in the strip.
   const BUTTON_SIZE = 48;
   const BUTTON_CENTER_FROM_EDGE = 48;
-  // The slot below Safari's back and Reader buttons, 60 points apart.
-  const BUTTON_TOP = 314;
+  // Safari's back/forward and Reader buttons move depending on whether
+  // there is a page to go forward to, which a page cannot know; the new-tab
+  // and tabs pill at the bottom stays put, so sit just above it.
+  const BUTTON_BOTTOM_GAP = 157;
   const root = document.documentElement;
   const state = { enabled: true, showButton: true, disabledHosts: [] };
   let strip = 0;
@@ -23,6 +25,16 @@
 
   function zoomed() {
     return window.visualViewport ? visualViewport.scale > 1.01 : false;
+  }
+
+  function displayHeight() {
+    const short = Math.min(screen.width, screen.height);
+    const long = Math.max(screen.width, screen.height);
+    return innerHeight >= innerWidth ? long : short;
+  }
+
+  function buttonTop() {
+    return displayHeight() - BUTTON_BOTTOM_GAP - BUTTON_SIZE;
   }
 
   function displayWidth() {
@@ -143,22 +155,40 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(247, 247, 248, 0.66);
-          -webkit-backdrop-filter: blur(14px) saturate(1.8);
-          backdrop-filter: blur(14px) saturate(1.8);
-          border: 1px solid rgba(0, 0, 0, 0.17);
-          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 3px 10px rgba(0, 0, 0, 0.08);
+          /* Liquid glass as Safari draws its strip buttons: a pale body, a
+             brighter top edge and a hairline rim, almost no shadow. */
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 60%),
+            rgba(242, 242, 247, 0.92);
+          border: 0.5px solid rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
           color: #000;
           transition: transform 0.2s cubic-bezier(0.3, 1.4, 0.6, 1), color 0.15s;
+        }
+        /* The blur only inside the page: past its edge WebKit does not paint
+           composited layers, and backdrop-filter makes one. */
+        div.inside {
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 60%),
+            rgba(242, 242, 247, 0.55);
+          -webkit-backdrop-filter: blur(12px) saturate(1.8);
+          backdrop-filter: blur(12px) saturate(1.8);
         }
         div.on { color: #007aff; }
         div.pressed { transform: scale(0.9); }
         @media (prefers-color-scheme: dark) {
           div {
-            background: rgba(118, 118, 124, 0.62);
-            border-color: rgba(255, 255, 255, 0.14);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 3px 10px rgba(0, 0, 0, 0.35);
+            background:
+              linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
+              rgba(120, 120, 126, 0.92);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
             color: #fff;
+          }
+          div.inside {
+            background:
+              linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
+              rgba(120, 120, 126, 0.55);
           }
           div.on { color: #0a84ff; }
         }
@@ -178,11 +208,11 @@
     if (gap) {
       host.style.position = "fixed";
       host.style.left = `${left}px`;
-      host.style.top = `${BUTTON_TOP}px`;
+      host.style.top = `${buttonTop()}px`;
     } else {
       host.style.position = "absolute";
       host.style.left = `${left}px`;
-      host.style.top = `${Math.round(scrollY + BUTTON_TOP)}px`;
+      host.style.top = `${Math.round(scrollY + buttonTop())}px`;
     }
     host.style.opacity = "1";
   }
@@ -197,6 +227,7 @@
     if (!host) buildButton();
     host.style.display = "block";
     button.classList.toggle("on", isOn());
+    button.classList.toggle("inside", gap > 0);
     button.setAttribute("aria-label", isOn() ? "Edge to Edge: on for this site" : "Edge to Edge: off for this site");
     placeButton();
   }
